@@ -8,9 +8,6 @@ The aim of this practical is to get you started using the HPC
 
 UNIX tutorial: https://swcarpentry.github.io/shell-novice/
 
-This is also a useful cheatsheet:
-UNIX Cheatsheet: http://rcg.group.shef.ac.uk/courses/linux/shell-cheatsheet.html
-
 ## 1. Logging in and getting started
 We will be working on windows machines, which means that you need to use a program (ssh client) to access the cluster. We will be using MobXterm. Start by opening the program, if you have used it before to connect to Bessemer you may find "bessemer.sheff.ac.uk" under "User sessions", in which case you can just double click on this to launch an ssh session on bessemer. If not, click on "Session">"New session">"SSH" and enter
 ```
@@ -151,3 +148,14 @@ Create a new directory here that is named your username (ie. boxxx, replacing th
 ```bash
 mkdir boXXX
 ```
+## 4. Familiarise yourself with UNIX
+
+Make a new folder in the new directory you made (HINT: mkdir)
+Move into that new folder (HINT: cd)
+Find your current path (HINT: pwd)
+Make a new file (HINT: nano)
+Move back a folder (HINT: cd ..)
+
+Try to run a program (e.g PLINK) (HINT: you need to be interactive mode to do this (srun --pty bash -i)
+
+
