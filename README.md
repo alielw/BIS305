@@ -158,4 +158,54 @@ Move back a folder (HINT: cd ..)
 
 Try to run a program (e.g PLINK) (HINT: you need to be interactive mode to do this (srun --pty bash -i)
 
+## 5. Running a batch job
+
+We are going to create a job to submit to the cluster
+
+```
+#!/bin/bash
+# Rename the job's name
+#SBATCH --job-name= ABC
+# Change the name of the output log file.
+#SBATCH --output= BC.txt
+#request 1 node
+#SBATCH --nodes=1
+#run 1 task per node
+#SBATCH --ntasks-per-node=1
+# Request 1 core
+#SBATCH --cpus-per-task=1
+# Request 2 gigabytes of real memory (RAM)
+#SBATCH --mem-per-cpu=2GB
+#set runtime to max 2 hours
+#SBATCH --time=2:00:00
+# Email notifications to user@sheffield.ac.uk
+#SBATCH --mail-user=username@sheffield.ac.uk
+# Email notifications if the job fails
+#SBATCH --mail-type=FAIL
+```
+
+The lines starting with ```#SBATCH``` set various options deterning how the job will run in the cluster. Check what these mean here (bessemer uses SLURM Commands):
+[https://docs.hpc.shef.ac.uk/en/latest/hpc/scheduler/index.html#batch-jobs](https://docs.hpc.shef.ac.uk/en/latest/hpc/scheduler/index.html#gsc.tab=0)
+
+The ```#SBATCH --mail-user``` option mean that it will send an email when the script starts, stops or aborts. You need to add your email address after the ```#SBATCH --mail-user=``` option. The save the file and exit.
+
+Run the script:
+```
+sbatch name.sh
+```
+
+Check the jobs you have running
+```bash
+squeue --me
+```
+You should see something like this
+```
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           3465904 interacti     bash    bo1nn  R      23:35      1 bessemer-node001
+           3465915 sheffield    MD5.1    bo1nn  R       0:06      1 bessemer-node004
+```
+The first job is your interactive session, the second is the job you just submitted. ```R``` is good and means it is running. Check the manual page for ```squeue``` to see what the other state codes mean. You should also receive an email to tell you that your job has started (end when it has ended). 
+
+Once the job has ended you should find that you have a new file in your directory. View the contents of this (hint ```less```).
+
 
