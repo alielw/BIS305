@@ -182,6 +182,8 @@ We are going to create a job to submit to the cluster
 #SBATCH --mail-user=username@sheffield.ac.uk
 # Email notifications if the job fails
 #SBATCH --mail-type=FAIL
+
+command you want to run
 ```
 
 The lines starting with ```#SBATCH``` set various options deterning how the job will run in the cluster. Check what these mean here (bessemer uses SLURM Commands):
